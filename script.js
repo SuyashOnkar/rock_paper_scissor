@@ -1,9 +1,8 @@
 function getComputerChoice() {
-   return Math.floor(Math.random() * 2) + 1;
-    
+   return Math.floor(Math.random() * 3) + 1;
 }
 
-const ComputerSelection = getComputerChoice();
+// const ComputerSelection = getComputerChoice();
 
 function getUserChoice() {
     let c = prompt("Enter >> ");
@@ -13,8 +12,9 @@ function getUserChoice() {
     if(c=="scissor"){return 3}
 }
 
-const UserSelection = getUserChoice();
+// const UserSelection = getUserChoice();
 
+/*
 function playRound(ComputerChoice, UserChoice) {
     if(UserChoice == 1) {
         if(ComputerChoice==1){return "Draw, Rock and Rock"}
@@ -32,5 +32,46 @@ function playRound(ComputerChoice, UserChoice) {
         if(ComputerChoice==3){return "Draw, Scissors and Scissors"}
     }
 }
+*/
 
-console.log(playRound(ComputerSelection,UserSelection));
+function playRound1(ComputerChoice, UserChoice) {
+    if(UserChoice == 1) {
+        if(ComputerChoice==1){return 0}
+        if(ComputerChoice==2){return -1}
+        if(ComputerChoice==3){return 1}
+    }
+    if(UserChoice == 2) {
+        if(ComputerChoice==1){return 1}
+        if(ComputerChoice==2){return 0}
+        if(ComputerChoice==3){return -1}
+    }
+    if(UserChoice == 3) {
+        if(ComputerChoice==1){return -1}
+        if(ComputerChoice==2){return 1}
+        if(ComputerChoice==3){return 0}
+    }
+}
+
+// console.log(playRound(ComputerSelection,UserSelection));
+
+function game(){
+    let win_counter = 0;
+    for(let i=0;i<5;i++){
+        const ComputerSelection = getComputerChoice();
+        const UserSelection = getUserChoice();
+
+
+        console.log(ComputerSelection);
+        console.log(UserSelection);
+
+        if(playRound1(ComputerSelection,UserSelection)==1){
+            win_counter+=1;
+            console.log("you win");
+        } 
+        
+    }
+    if (win_counter>2) {console.log("You Win!")}
+    else {console.log("You Lose")}
+}
+
+game();
