@@ -1,77 +1,21 @@
 function getComputerChoice() {
-   return Math.floor(Math.random() * 3) + 1;
+    let arr = ['rock','paper','scissor'];
+    return arr[Math.floor(Math.random()*3)];
 }
-
-// const ComputerSelection = getComputerChoice();
 
 function getUserChoice() {
-    let c = prompt("Enter >> ");
-    c.toLowerCase();
-    if(c=="rock"){return 1}
-    if(c=="paper"){return 2}
-    if(c=="scissor"){return 3}
+    let u = prompt("Enter your choice > ");
+    return u.toLowerCase();
 }
 
-// const UserSelection = getUserChoice();
-
-/*
-function playRound(ComputerChoice, UserChoice) {
-    if(UserChoice == 1) {
-        if(ComputerChoice==1){return "Draw, Rock and Rock"}
-        if(ComputerChoice==2){return "Lose, Rock Loses to Paper"}
-        if(ComputerChoice==3){return "Win, Rock beats Scissors"}
+function playRound(computerChoice, userChoice) {
+    if((computerChoice=='rock'&&userChoice=='scissor')||(computerChoice=='paper'&&userChoice=='rock')||(computerChoice=='scissor'&&userChoice=='paper')) {
+        console.log("You LOSE!, ", {computerChoice}, " Beats", {userChoice} );
     }
-    if(UserChoice == 2) {
-        if(ComputerChoice==1){return "Win, Paper Beats Rock"}
-        if(ComputerChoice==2){return "Draw, Paper and Paper"}
-        if(ComputerChoice==3){return "Lose, Paper Loses to Scissors"}
+    if((computerChoice=='rock'&&userChoice=='rock')||(computerChoice=='paper'&&userChoice=='paper')||(computerChoice=='scissor'&&userChoice=='scissor')) {
+        console.log("DRAW!, ", {computerChoice}, " is same", {userChoice} );
     }
-    if(UserChoice == 3) {
-        if(ComputerChoice==1){return "Lose, Scissor Loses to Rock"}
-        if(ComputerChoice==2){return "Win, Scissor Beats Paper"}
-        if(ComputerChoice==3){return "Draw, Scissors and Scissors"}
+    if((computerChoice=='rock'&&userChoice=='paper')||(computerChoice=='paper'&&userChoice=='scissor')||(computerChoice=='scissor'&&userChoice=='rock')) {
+        console.log("You WIN!, ", {computerChoice}, " Loses to", {userChoice} );
     }
 }
-*/
-
-function playRound1(ComputerChoice, UserChoice) {
-    if(UserChoice == 1) {
-        if(ComputerChoice==1){return 0}
-        if(ComputerChoice==2){return -1}
-        if(ComputerChoice==3){return 1}
-    }
-    if(UserChoice == 2) {
-        if(ComputerChoice==1){return 1}
-        if(ComputerChoice==2){return 0}
-        if(ComputerChoice==3){return -1}
-    }
-    if(UserChoice == 3) {
-        if(ComputerChoice==1){return -1}
-        if(ComputerChoice==2){return 1}
-        if(ComputerChoice==3){return 0}
-    }
-}
-
-// console.log(playRound(ComputerSelection,UserSelection));
-
-function game(){
-    let win_counter = 0;
-    for(let i=0;i<5;i++){
-        const ComputerSelection = getComputerChoice();
-        const UserSelection = getUserChoice();
-
-
-        console.log(ComputerSelection);
-        console.log(UserSelection);
-
-        if(playRound1(ComputerSelection,UserSelection)==1){
-            win_counter+=1;
-            console.log("you win");
-        } 
-        
-    }
-    if (win_counter>2) {console.log("You Win!")}
-    else {console.log("You Lose")}
-}
-
-game();
