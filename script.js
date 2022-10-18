@@ -8,10 +8,12 @@ function getUserChoice() {
     return u.toLowerCase();
 }
 
+
 function playRound(computerChoice, userChoice) {
     if((computerChoice=='rock'&&userChoice=='scissor')||(computerChoice=='paper'&&userChoice=='rock')||(computerChoice=='scissor'&&userChoice=='paper')) {
         console.log("You LOSE!, ", {computerChoice}, " Beats", {userChoice} );
         return -1; // -1 = Lose 0 = Draw 1 = Win
+        
     }
     if((computerChoice=='rock'&&userChoice=='rock')||(computerChoice=='paper'&&userChoice=='paper')||(computerChoice=='scissor'&&userChoice=='scissor')) {
         console.log("DRAW!, ", {computerChoice}, " is same", {userChoice} );
@@ -19,35 +21,37 @@ function playRound(computerChoice, userChoice) {
     }
     if((computerChoice=='rock'&&userChoice=='paper')||(computerChoice=='paper'&&userChoice=='scissor')||(computerChoice=='scissor'&&userChoice=='rock')) {
         console.log("You WIN!, ", {computerChoice}, " Loses to", {userChoice} );
+
         return 1;
+        
     }
 }
 
-function game(){
-    let win = 0, lose = 0, draw = 0;
-    
-    for(let i=0;i<5;i++){
-        let x = playRound(getComputerChoice(),getUserChoice());
-        if(x==1){
-            win++;
-        }
-        if(x==-1){
-            lose++;
-        }
-        if(x==0){
-            draw++;
-        }
-    }
+const b = document.getElementById("button-1");
 
-    if(win>lose){
-        alert("YOU WIN!");
-    }
-    if(win<lose){
-        alert("YOU LOSE");
-    }
-    if(win==lose){
-        alert("DRAW! zzzzzzz");
-    }
+let x=0,y=0,z=0;
 
+const user = document.getElementById("userScore");
+const computer = document.getElementById("computerScore");
+
+b.addEventListener('click', function(){
     
-}
+    let a = playRound(getComputerChoice(),getUserChoice());
+    if(a==1){
+        x++;
+        user.textContent = x;
+        if(x==5){
+            alert("YOU WIN!!");
+        }
+    }
+   
+    if(a==-1){
+        z++;
+        computer.textContent = z;
+        if(z==5){
+            alert("YOU LOSE :(");
+        }
+    }
+    
+});
+
